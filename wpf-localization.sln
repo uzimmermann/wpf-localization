@@ -20,7 +20,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{ED8079DD
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "app", "app", "{C438B33E-A091-4370-8073-73DF7C0F1E8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfLocalization.Framework", "src\app\WpfLocalization.Framework\WpfLocalization.Framework.csproj", "{29C0128B-92C3-4CD6-A7C7-CEAA581A0B9C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfLocalization.Framework", "src\WpfLocalization.Framework\WpfLocalization.Framework.csproj", "{29C0128B-92C3-4CD6-A7C7-CEAA581A0B9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

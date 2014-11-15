@@ -10,6 +10,11 @@ open Fake.AssemblyInfoFile
 open Fake.ReleaseNotesHelper
 open System
 open System.IO
+#if MONO
+#else
+#load "packages/SourceLink.Fake/Tools/Fake.fsx"
+open SourceLink
+#endif
 
 // --------------------------------------------------------------------------------------
 // START TODO: Provide project-specific details below
@@ -261,18 +266,18 @@ Target "All" DoNothing
   ==> "AssemblyInfo"
   ==> "Build"
   ==> "RunTests"
-  // =?> ("GenerateReferenceDocs",isLocalBuild && not isMono)
-  // =?> ("GenerateDocs",isLocalBuild && not isMono)
-   ==> "All"
-  // =?> ("ReleaseDocs",isLocalBuild && not isMono)
+  =?> ("GenerateReferenceDocs",isLocalBuild && not isMono)
+  =?> ("GenerateDocs",isLocalBuild && not isMono)
+  ==> "All"
+  =?> ("ReleaseDocs",isLocalBuild && not isMono)
 
 "All" 
-{* #if MONO
+#if MONO
 #else
   =?> ("SourceLink", Pdbstr.tryFind().IsSome )
 #endif
   ==> "NuGet"
-  ==> "BuildPackage" *}
+  ==> "BuildPackage"
 
 "CleanDocs"
   ==> "GenerateHelp"

@@ -265,12 +265,8 @@ Target "All" DoNothing
 "Clean"
   ==> "AssemblyInfo"
   ==> "Build"
-  ==> "RunTests"
-  =?> ("GenerateReferenceDocs",isLocalBuild && not isMono)
-  =?> ("GenerateDocs",isLocalBuild && not isMono)
   ==> "All"
-  =?> ("ReleaseDocs",isLocalBuild && not isMono)
-
+  
 "All" 
 #if MONO
 #else

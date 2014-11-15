@@ -1,4 +1,4 @@
 wpf-localization
 ================
 
-framework for localization of wpf applications
+A little framework to localize wpf applications.

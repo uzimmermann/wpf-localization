@@ -183,3 +183,9 @@ paket-files
 .paket/paket.exe
 docs/content/license.md
 docs/content/release-notes.md
+
+# ===================================================
+# Exclude C# assembly info files
+# ===================================================
+
+src/WpfLocalization.Framework/Properties/AssemblyInfo.cs

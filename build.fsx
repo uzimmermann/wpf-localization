@@ -47,8 +47,13 @@ let tags = "wpf localization framework"
 // File system information 
 let solutionFile  = "wpf-localization.sln"
 
-// Pattern specifying assemblies to be tested using NUnit
-let testAssemblies = "tests/**/*Tests*.dll"
+let testDir = @"bin\tests\**\"
+
+let reportDir = @"bin\tests\results\"
+
+let packagesDir = @"packages"
+
+let mspecDir = packagesDir @@ @"Machine.Specifications.Runner.Console\tools\"
 
 // Git configuration (used for publishing documentation in gh-pages branch)
 // The profile where the project is posted
@@ -68,33 +73,29 @@ let gitRaw = environVarOrDefault "gitRaw" "https://raw.github.com/uzimmermann"
 // Read additional information from the release notes document
 let release = LoadReleaseNotes "RELEASE_NOTES.md"
 
-let genFSAssemblyInfo (projectPath) =
-    let projectName = System.IO.Path.GetFileNameWithoutExtension(projectPath)
-    let basePath = "src/" + projectName
-    let fileName = basePath + "/AssemblyInfo.fs"
-    CreateFSharpAssemblyInfo fileName
-      [ Attribute.Title (projectName)
-        Attribute.Product project
-        Attribute.Description summary
-        Attribute.Version release.AssemblyVersion
-        Attribute.FileVersion release.AssemblyVersion ]
-
 let genCSAssemblyInfo (projectPath) =
     let projectName = System.IO.Path.GetFileNameWithoutExtension(projectPath)
     let basePath = "src/" + projectName + "/Properties"
     let fileName = basePath + "/AssemblyInfo.cs"
-    CreateCSharpAssemblyInfo fileName
-      [ Attribute.Title (projectName)
-        Attribute.Product project
-        Attribute.Description summary
-        Attribute.Version release.AssemblyVersion
-        Attribute.FileVersion release.AssemblyVersion ]
+    if projectName.Equals("WpfLocalization.Framework") = true then 
+        CreateCSharpAssemblyInfo fileName
+          [ Attribute.Title (projectName)
+            Attribute.Product project
+            Attribute.Description summary
+            Attribute.Version release.AssemblyVersion
+            Attribute.FileVersion release.AssemblyVersion 
+            Attribute.InternalsVisibleTo "WpfLocalization.Framework.Tests" ]
+    else
+        CreateCSharpAssemblyInfo fileName
+          [ Attribute.Title (projectName)
+            Attribute.Product project
+            Attribute.Description summary
+            Attribute.Version release.AssemblyVersion
+            Attribute.FileVersion release.AssemblyVersion ]
 
 // Generate assembly info files with the right version & up-to-date information
 Target "AssemblyInfo" (fun _ ->
-  let fsProjs =  !! "src/**/*.fsproj"
   let csProjs = !! "src/**/*.csproj"
-  fsProjs |> Seq.iter genFSAssemblyInfo
   csProjs |> Seq.iter genCSAssemblyInfo
 )
 
@@ -119,15 +120,12 @@ Target "Build" (fun _ ->
 )
 
 // --------------------------------------------------------------------------------------
-// Run the unit tests using test runner
 
 Target "RunTests" (fun _ ->
-    !! testAssemblies
-    |> NUnit (fun p ->
-        { p with
-            DisableShadowCopy = true
-            TimeOut = TimeSpan.FromMinutes 20.
-            OutputFile = "TestResults.xml" })
+  !! (testDir @@ "*.Tests.dll")
+    |> MSpec (fun p ->
+      {p with
+        HtmlOutputDir = reportDir})
 )
 
 #if MONO
@@ -265,6 +263,7 @@ Target "All" DoNothing
 "Clean"
   ==> "AssemblyInfo"
   ==> "Build"
+  ==> "RunTests"
   ==> "All"
   
 "All" 

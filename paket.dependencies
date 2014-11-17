@@ -6,5 +6,8 @@ nuget NUnit.Runners
 nuget Nuget.CommandLine
 nuget FAKE
 nuget SourceLink.Fake
+nuget Machine.Specifications
+Machine.Specifications.Runner.Console
+nuget Machine.Specifications.Should
 
 github fsharp/FAKE modules/Octokit/Octokit.fsx

@@ -8,27 +8,28 @@ namespace WpfLocalization.Framework
     public interface ISupportLocalization
     {
         /// <summary>
-        /// Gets the identifier of this instance of an implementation of <see cref="ISupportLocalization"/>.      
+        /// Gets the identifier of the current instance of an implementation of <see cref="ISupportLocalization"/>.      
         /// </summary>
         Guid Id { get; }
 
         /// <summary>
-        /// Does the localization of this instance of an implementation of <see cref="ISupportLocalization"/>.
+        /// Does the localization of the current instance of an implementation of <see cref="ISupportLocalization"/>.
         /// </summary>
         void Localize();
 
         /// <summary>
-        /// Gets or sets a value indicating whether the localization of this instance is suspended.
+        /// Gets or sets a value indicating whether the localization of the current instance of an implementation of 
+        /// <see cref="ISupportLocalization"/> is suspended.
         /// </summary>
         bool LocalizationIsSuspended { get; set; }
 
         /// <summary>
-        /// Suspends localization of this instance of an implementation of <see cref="ISupportLocalization"/>.
+        /// Suspends localization of the current instance of an implementation of <see cref="ISupportLocalization"/>.
         /// </summary>
         void SuspendLocalization();
 
         /// <summary>
-        /// Resumes localization of this instance of an implementation of <see cref="ISupportLocalization"/>.
+        /// Resumes localization of the current instance of an implementation of <see cref="ISupportLocalization"/>.
         /// </summary>
         void ResumeLocalization();
     }

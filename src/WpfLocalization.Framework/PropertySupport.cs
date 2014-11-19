@@ -5,7 +5,7 @@ using System.Reflection;
 namespace WpfLocalization.Framework
 {
     /// <summary>
-    /// Helper class for returning the name of a property given by a lambda expression.
+    /// Helper class for returning the name of a property given by an expression tree.
     /// </summary>
     internal static class PropertySupport
     {
@@ -14,7 +14,7 @@ namespace WpfLocalization.Framework
         /// </summary>
         /// <typeparam name="TProperty">The type of the property.</typeparam>
         /// <param name="propertyExpression">
-        /// A lambda expression representing the property to retrieve the name for.
+        /// An expression tree representing the property to retrieve the name for.
         /// </param>
         /// <returns>A string containing the name of the given property.</returns>
         /// <exception cref="ArgumentNullException">When <paramref name="propertyExpression"/> is null.</exception>

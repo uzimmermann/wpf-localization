@@ -36,7 +36,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LocalizableAttribute.cs" />
-    <Compile Include="ILocalizedTexts.cs" />
+    <Compile Include="IHandleLocalizedTexts.cs" />
     <Compile Include="PropertySupport.cs" />
     <Compile Include="IManageLocalizedTextResources.cs" />
     <Compile Include="CultureChangedEventArgs.cs" />

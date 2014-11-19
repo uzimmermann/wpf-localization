@@ -4,7 +4,7 @@ using System.Globalization;
 namespace WpfLocalization.Framework
 {
     /// <summary>
-    /// Provides data for the <see cref="ILocalizableApplication.CultureChangedEvent"/>. This class cannot be
+    /// Provides data for the <see cref="ILocalizeAnApplication.CultureChanged"/> event. This class cannot be
     /// inherited.
     /// </summary>
     public sealed class CultureChangedEventArgs : EventArgs

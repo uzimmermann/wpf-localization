@@ -40,6 +40,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ErrorMessages.resx</DependentUpon>
     </Compile>
+    <Compile Include="ILocalizeAnApplication.cs" />
     <Compile Include="LocalizedTexts.cs" />
     <Compile Include="LocalizableAttribute.cs" />
     <Compile Include="IHandleLocalizedTexts.cs" />

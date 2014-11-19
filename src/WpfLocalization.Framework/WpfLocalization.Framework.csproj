@@ -35,6 +35,7 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ILocalizedTexts.cs" />
     <Compile Include="PropertySupport.cs" />
     <Compile Include="IManageLocalizedTextResources.cs" />
     <Compile Include="CultureChangedEventArgs.cs" />

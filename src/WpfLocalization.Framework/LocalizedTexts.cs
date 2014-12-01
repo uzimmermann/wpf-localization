@@ -237,7 +237,7 @@ namespace WpfLocalization.Framework
 
             if (!secondAndThirdPartOfTextResourceNameMatch.Success)
             {
-                var message = string.Format(
+                var message = String.Format(
                     CultureInfo.InvariantCulture,
                     ErrorMessages.TextResourceWithGivenArgumentsCouldNotBeFoundFormatString,
                     "viewModelClassName",
@@ -255,7 +255,7 @@ namespace WpfLocalization.Framework
                 .Groups["thirdPartOfTextResourceName"]
                 .Value;
 
-            var resourceName = string.Format(
+            var resourceName = String.Format(
                 CultureInfo.InvariantCulture, 
                 "{0}_{1}_{2}", 
                 firstPartOfTextResourceName, 

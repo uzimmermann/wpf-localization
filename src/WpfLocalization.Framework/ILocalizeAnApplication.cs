@@ -19,6 +19,11 @@ namespace WpfLocalization.Framework
         CultureInfo CurrentCulture { get; set; }
 
         /// <summary>
+        /// Gets the default culture.
+        /// </summary>
+        CultureInfo DefaultCulture { get; }
+
+        /// <summary>
         /// Gets the localized texts.
         /// </summary>
         IHandleLocalizedTexts LocalizedTexts { get; }
